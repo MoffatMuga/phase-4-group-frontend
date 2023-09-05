@@ -1,0 +1,23 @@
+
+.activity-list {
+    margin-top: 20px;
+  }
+  
+  .activity-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .activity-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  
+  .activity-list button {
+    margin-left: 10px;
+  }
+  

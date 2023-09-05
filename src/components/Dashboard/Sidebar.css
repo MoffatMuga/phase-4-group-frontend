@@ -1,0 +1,45 @@
+
+.sidebar {
+    width: 250px;
+    background-color: #241f3f;
+    color: #ff6900;
+    padding: 20px;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .user-info {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .user-info p {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .activity-list {
+    padding: 20px 0;
+  }
+  
+  .activity-list h2 {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  
+  .activity-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .activity-list li {
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .activity-list li:hover {
+    background-color: #444;
+  }
+  

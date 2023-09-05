@@ -1,0 +1,17 @@
+
+.delete-activity {
+    margin-top: 20px;
+  }
+  
+  .delete-activity p {
+    margin-bottom: 10px;
+  }
+  
+  .delete-activity button {
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  

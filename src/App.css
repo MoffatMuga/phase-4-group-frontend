@@ -1,0 +1,40 @@
+
+.navbar {
+  background-color: #241f3f;
+  padding: 10px;
+  color: #fff;
+}
+
+.navbar ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar li {
+  margin: 0 10px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: aqua;
+}
+
+.footer-copyright {
+  background-color: #241f3f;
+  color: aqua;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  clear: both; /* Clear both left and right floated elements */
+  margin-top: 20px; /* Add a margin to push it below the content */
+  padding-left: 10px; /* Add a 10px gap from the left margin */
+  padding-right: 10px; /* Add a 10px gap from the right margin */
+}
+
+.footer-copyright p {
+  margin: 0;
+}
+

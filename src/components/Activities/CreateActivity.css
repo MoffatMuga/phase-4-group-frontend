@@ -1,0 +1,47 @@
+
+.create-activity {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .create-activity h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .create-activity form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .create-activity select,
+  .create-activity input {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .create-activity button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  
+  .create-activity select {
+    appearance: none;
+    background-color: white;
+    background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%233b3b3b'><polygon points='6 0 0 12 12 12' /></svg>");
+    background-position: right 8px center;
+    background-repeat: no-repeat;
+    background-size: 12px;
+    padding-right: 30px;
+  }
+  
