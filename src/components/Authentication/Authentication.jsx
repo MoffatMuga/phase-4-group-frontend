@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Authentication.css'; // Import your CSS file
+import './Authentication.css'; 
 
 const Authentication = () => {
   const [email, setEmail] = useState('');
@@ -10,7 +10,7 @@ const Authentication = () => {
   const [isRegistering, setIsRegistering] = useState(false);
 
   const handleSignUp = async () => {
-    // Check if the email is already registered
+    // Check if the email is already registered (replace with your actual user check logic)
     const existingUser = users.find((u) => u.email === email);
 
     if (existingUser) {
@@ -70,9 +70,23 @@ const Authentication = () => {
     }
   };
 
-  const handleLogout = () => {
-    setUser(null);
+  const handleLogout = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/logout', {
+        method: 'DELETE',
+      });
+  
+      if (response.ok) {
+        // Logout was successful on the server, clear the user state
+        setUser(null);
+      } else {
+        console.error('Logout failed.');
+      }
+    } catch (error) {
+      console.error('Error during logout:', error);
+    }
   };
+  
 
   const toggleRegister = () => {
     setIsRegistering(!isRegistering);
@@ -81,8 +95,19 @@ const Authentication = () => {
   return (
     <div className="authentication-container">
       <h2>Authentication</h2>
-      {isRegistering ? (
+      {user ? (
+        <div>
+          {/* If a user is logged in */}
+          <p className="welcome-message">Welcome, {user.name}</p>
+          <button className="logout-button" onClick={handleLogout}>
+            Log Out
+          </button>
+        </div>
+      ) : (
+        <div>
+          {isRegistering ? (
             <div>
+              {/* If the user is in registration mode */}
               <input
                 className="input-field"
                 type="text"
@@ -99,17 +124,17 @@ const Authentication = () => {
               />
               <input
                 className="input-field"
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <input
-                className="input-field"
                 type="text"
                 placeholder="Age"
                 value={age}
                 onChange={(e) => setAge(e.target.value)}
+              />
+              <input
+                className="input-field"
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button className="action-button" onClick={handleSignUp}>
                 Sign Up
@@ -117,6 +142,7 @@ const Authentication = () => {
             </div>
           ) : (
             <div>
+              {/* If the user is in login mode */}
               <input
                 className="input-field"
                 type="email"
@@ -139,6 +165,8 @@ const Authentication = () => {
               </button>
             </div>
           )}
+        </div>
+      )}
     </div>
   );
 };
