@@ -4,7 +4,7 @@
     max-width: 300px;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #ff6900;
     border-radius: 5px;
     background-color: #fff;
     text-align: center;
@@ -23,15 +23,15 @@
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: aquamarine;
+    color: #241f3f;
     border: none;
     border-radius: 5px;
     cursor: pointer;
   }
   
   .action-button:hover {
-    background-color: #0056b3;
+    background-color: aqua;
   }
   
   .welcome-message {

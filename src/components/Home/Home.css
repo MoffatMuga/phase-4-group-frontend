@@ -108,3 +108,64 @@
 
 
   
+  .left-column {
+    flex: 1;
+    text-align: left;
+  }
+
+  .landing {
+    background-image: url('phot02.png.webp'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    min-height: 80vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .description {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+  }
+  
+  .welcome {
+    color: #ff6900;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  
+  .about {
+    margin-top: 20px; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+  }
+  
+  .word {
+    font-family: 'YourChosenFont', sans-serif; 
+    font-size: 1.2em;
+    margin: 5px;
+    color: #ff6900;
+    font-weight: 1000;
+  }
+  
+  .Button {
+    margin-right: 5px;
+    width: 200px;
+    padding: 10px;
+    margin: 5px;
+    background-color: aqua;
+    color: #241f3f;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    border-color: #ff6900;
+    
+  }
+  
+  
+  

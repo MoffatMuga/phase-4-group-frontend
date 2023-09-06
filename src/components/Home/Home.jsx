@@ -8,10 +8,31 @@ import './Home.css'
 const Home = () => {
   return (
     <div className="home">
-      <h1>Welcome to Your Study Assistant App</h1>
-      <Link to="/authentication">
-          <button className='Button'>Book Now</button>
-      </Link>
+            <div className="landing">
+                <div className="description">
+                    <div className="left-column">
+                        <h1>
+                                <span className="welcome">Welcome</span> to Your Study Assistant App
+                        </h1>
+                <div className="center-button">
+                    <Link to="/authentication">
+                        <button className="Button">Give A Try</button>
+                    </Link>
+                </div>
+                </div>
+                    <div className="about">
+                    <div className="word">Efficient</div>
+                    <div className="word">Collaborative</div>
+                    <div className="word">Productive</div>
+                    <div className="word">Accessible</div>
+                    <div className="word">Effective</div>
+            </div>
+        </div>
+    </div>
+
+
+
+
 
             <div className="container">
                 <div className="info-item">

@@ -1,7 +1,7 @@
 
 .create-activity {
     background-color: #fff;
-    border: 1px solid #ccc;
+    border: 1px solid #ff6900;
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -28,8 +28,8 @@
   
   .create-activity button {
     padding: 10px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: aqua;
+    color: #241f3f;
     border: none;
     cursor: pointer;
   }
