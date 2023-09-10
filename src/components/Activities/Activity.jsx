@@ -87,6 +87,7 @@ const Activity = () => {
           onDelete={handleDelete}
         />
       )}
+      
     </div>
   );
 };

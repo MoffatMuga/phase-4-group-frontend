@@ -1,73 +1,76 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import './Home.css'
+import './Home.css';
 
 const Home = () => {
   return (
     <div className="home">
-            <div className="landing">
-                <div className="description">
-                    <div className="left-column">
-                        <h1>
-                                <span className="welcome">Welcome</span> to Your Study Assistant App
-                        </h1>
-                <div className="center-button">
-                    <Link to="/authentication">
-                        <button className="Button">Give A Try</button>
-                    </Link>
-                </div>
-                </div>
-                    <div className="about">
-                    <div className="word">Efficient</div>
-                    <div className="word">Collaborative</div>
-                    <div className="word">Productive</div>
-                    <div className="word">Accessible</div>
-                    <div className="word">Effective</div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-            <div className="container">
-                <div className="info-item">
-                    <p>Subscribe to our newsletter</p>
-                    <form className="newsletter-form">
-                        <input type="text" placeholder="First Name" />
-                        <input type="text" placeholder="Last Name" />
-                        <input type="email" placeholder="Email" />
-                    <button type="submit">Subscribe</button>
-                    </form>
-                </div>
-
-                <div className="image-container">
-                    <img src="photo1.png.webp" alt="student studying" />
-                </div>
-            </div>
-
-        <footer className="footer-container">
-        <div className="footer-social">
-          <div className="social-icons">
+      <div className="landing">
+        <div className="content">
+          <div className="text">
+            <h1>
+              <span className="welcome">Welcome</span>
+              <br /> <span className='sentence'>to Our Study Assistant App</span>
+            </h1>
+            <Link to="/authentication" className="center-button">
+              <div className="arrow-button">GET STARTED HERE</div>
+            </Link>
+          </div>
+          <div className="icons">
             <a href="https://facebook.com">
-            <FontAwesomeIcon icon={faFacebookF} />
-          </a>
-          <a href="https://twitter.com">
-            <FontAwesomeIcon icon={faTwitter} />
-          </a>
-          <a href="https://instagram.com">
-            <FontAwesomeIcon icon={faInstagram} />
-          </a>
+              <FontAwesomeIcon icon={faFacebookF} />
+            </a>
+            <a href="https://twitter.com">
+              <FontAwesomeIcon icon={faTwitter} />
+            </a>
+            <a href="https://instagram.com">
+              <FontAwesomeIcon icon={faInstagram} />
+            </a>
           </div>
         </div>
-      <br />
-        
-      </footer>
-    </div>
+        <div className="image-container">
+          <img src="photo2.png.png" alt="student studying" />
+        </div>
+      </div>
+
+      <div className="cards">
+        <div className="card">
+          <h2 className='header'>Why We Have High Active Users</h2>
+          <p>Explanation about high active users goes here.</p>
+        </div>
+        <div className="card">
+          <h2 className='header'>Why We Have a High Rate of Approvals</h2>
+          <p>Explanation about high rate of approvals goes here.</p>
+        </div>
+        <div className="card">
+          <h2 className='header'>Why We Have a High Rate of Referrals</h2>
+          <p>Explanation about high rate of referrals goes here.</p>
+        </div>
+      </div>
+
+      <div className="percentage-container">
+      <div className="percentage-item">
+          <div className="percentage-label">ACTIVE USERS</div>
+          <div className="percentage-progress">
+            <div className="percentage-fill" style={{ width: '90%' }}>90%</div>
+          </div>
+        </div>
+        <div className="percentage-item">
+          <div className="percentage-label">APPROVALS</div>
+          <div className="percentage-progress">
+            <div className="percentage-fill" style={{ width: '92%' }}>92%</div>
+          </div>
+        </div>
+        <div className="percentage-item">
+          <div className="percentage-label">REFERRALS</div>
+          <div className="percentage-progress">
+            <div className="percentage-fill" style={{ width: '87%' }}>87%</div>
+          </div>
+        </div>
+      </div>
+      </div>
   );
 };
 

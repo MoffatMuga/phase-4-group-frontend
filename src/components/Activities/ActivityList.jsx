@@ -23,6 +23,15 @@ const ActivityList = ({ onEdit, onDelete }) => {
           </li>
         ))}
       </ul>
+      <div className="image-container">
+          <img
+          src="https://storyset.com/education/images/illustrations/reading/pana.svg"
+          alt="Education Illustration by Storyset"
+          className="image"
+          />
+      </div>
+
+    
     </div>
   );
 };

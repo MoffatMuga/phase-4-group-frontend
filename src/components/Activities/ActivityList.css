@@ -20,4 +20,13 @@
   .activity-list button {
     margin-left: 10px;
   }
+  .image-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
   
+  .image {
+    width: 100px; 
+    height: auto;
+  }

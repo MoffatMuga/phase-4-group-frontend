@@ -1,6 +1,6 @@
 
 .navbar {
-  background-color: #241f3f;
+  background-color: none;
   padding: 10px;
   color: #fff;
 }
@@ -9,32 +9,37 @@
   list-style: none;
   padding: 0;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
-
 .navbar li {
   margin: 0 10px;
 }
 
 .navbar a {
   text-decoration: none;
-  color: aqua;
+  color: #23dba4;
+  font-weight: 1000px;
+  font-family: 'Six Caps', sans-serif;
 }
 
 .footer-copyright {
-  background-color: #241f3f;
-  color: aqua;
+  background-color: none;
+  color: black;
   height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  clear: both; /* Clear both left and right floated elements */
-  margin-top: 20px; /* Add a margin to push it below the content */
-  padding-left: 10px; /* Add a 10px gap from the left margin */
-  padding-right: 10px; /* Add a 10px gap from the right margin */
+  clear: both; 
+  margin-top: 20px; 
+  padding-left: 10px; 
+  padding-right: 10px; 
 }
 
 .footer-copyright p {
   margin: 0;
 }
+
+
+
+
 

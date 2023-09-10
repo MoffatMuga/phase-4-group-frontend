@@ -20,10 +20,11 @@ const App = () => {
       <div className="app">
         <nav className="navbar">
           <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/authentication">Authentication</Link></li>
-            <li><Link to="/activities">Activities</Link></li>
-            <li><Link to="/dashboard">Dashboard</Link></li>
+            <li><Link to="/">HOME</Link></li>
+            <li><Link to="/authentication">LOG IN</Link></li>
+            <li><Link to="/activities">ACTIVITIES</Link></li>
+            <li><Link to="/dashboard">DASHBOARD</Link></li>
+            
           </ul>
         </nav>
 
