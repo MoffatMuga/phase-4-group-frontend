@@ -38,7 +38,7 @@ const Dashboard = () => {
       <Sidebar user={{ name: 'User Name' }} activities={activitiesData} onActivityClick={handleActivityClick} />
       <div className="content">
         <div className="graph-container">
-          <h2>Activity Graph</h2>
+          <h2 className='activity-h2'>YOUR ACTIVITY GRAPH</h2>
           {selectedActivityData ? (
             <ActivityGraph data={selectedActivityData} />
           ) : (

@@ -38,21 +38,21 @@ const Home = () => {
       <div className="cards">
         <div className="card">
           <h2 className='header'>Why We Have High Active Users</h2>
-          <p>Explanation about high active users goes here.</p>
+          <p>The website has an intuitive and easy-to-navigate user interface.This keeps users engaged by tailoring the experience to their needs.</p>
         </div>
         <div className="card">
           <h2 className='header'>Why We Have a High Rate of Approvals</h2>
-          <p>Explanation about high rate of approvals goes here.</p>
+          <p> Offering a free tier with valuable features and content that attracts a broad user base, users can experience the platform's benefits without a financial commitment.</p>
         </div>
         <div className="card">
           <h2 className='header'>Why We Have a High Rate of Referrals</h2>
-          <p>Explanation about high rate of referrals goes here.</p>
+          <p> We promise to demonstrate a commitment to ongoing improvement and addressing user feedback.</p>
         </div>
       </div>
 
       <div className="percentage-container">
       <div className="percentage-item">
-          <div className="percentage-label">ACTIVE USERS</div>
+          <div className="percentage-label">DAILY ACTIVE USERS</div>
           <div className="percentage-progress">
             <div className="percentage-fill" style={{ width: '90%' }}>90%</div>
           </div>

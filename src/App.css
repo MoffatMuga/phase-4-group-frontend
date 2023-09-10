@@ -1,6 +1,5 @@
-
 .navbar {
-  background-color: none;
+  background-color: transparent; 
   padding: 10px;
   color: #fff;
 }
@@ -17,29 +16,32 @@
 
 .navbar a {
   text-decoration: none;
-  color: #23dba4;
-  font-weight: 1000px;
+  padding: 10px 20px; 
+  border-radius: 25px; 
+  background-color: #23dba4; 
+  color: #fff; 
+  font-weight: 1000; 
   font-family: 'Six Caps', sans-serif;
+  transition: background-color 0.3s ease; 
+}
+
+.navbar a:hover {
+  background-color: #3bb993; 
 }
 
 .footer-copyright {
-  background-color: none;
+  background-color: transparent; 
   color: black;
   height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  clear: both; 
-  margin-top: 20px; 
-  padding-left: 10px; 
-  padding-right: 10px; 
+  clear: both;
+  margin-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .footer-copyright p {
   margin: 0;
 }
-
-
-
-
-

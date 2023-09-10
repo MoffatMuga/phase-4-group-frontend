@@ -26,7 +26,7 @@ const CreateActivity = ({ onCreate }) => {
 
   return (
     <div className="create-activity">
-      <h2>Create New Activity</h2>
+      <h2 className='create'>CREATE AN ACTIVITY</h2>
       <form onSubmit={handleSubmit}>
         <select
           value={selectedActivity}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Authentication.css'; 
+import './Authentication.css';
 
 const Authentication = () => {
   const [email, setEmail] = useState('');
@@ -10,39 +10,32 @@ const Authentication = () => {
   const [isRegistering, setIsRegistering] = useState(false);
 
   const handleSignUp = async () => {
-    // Check if the email is already registered (replace with your actual user check logic)
-    const existingUser = users.find((u) => u.email === email);
+    // Register the user by making a POST request to your backend API
+    const newUser = { name, email, password, age };
+    try {
+      const response = await fetch('https://study-helper-rbkb.onrender.com/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newUser),
+      });
 
-    if (existingUser) {
-      console.error('Email is already registered.');
-    } else {
-      // Register the user by making a POST request to your backend API
-      const newUser = { name, email, password, age };
-      try {
-        const response = await fetch('http://localhost:3000/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(newUser),
-        });
+      if (response.ok) {
+        // Registration successful, handle the response if needed
+        setUser(newUser);
 
-        if (response.ok) {
-          // Registration successful, handle the response if needed
-          setUser(newUser);
-
-          // After successful registration, reset the form and switch back to login
-          setEmail('');
-          setPassword('');
-          setName('');
-          setAge('');
-          setIsRegistering(false);
-        } else {
-          console.error('Registration failed.');
-        }
-      } catch (error) {
-        console.error('Error during registration:', error);
+        // After successful registration, reset the form and switch back to login
+        setEmail('');
+        setPassword('');
+        setName('');
+        setAge('');
+        setIsRegistering(false);
+      } else {
+        console.error('Registration failed.');
       }
+    } catch (error) {
+      console.error('Error during registration:', error);
     }
   };
 
@@ -50,7 +43,7 @@ const Authentication = () => {
     // Make a POST request to your backend API for authentication
     const credentials = { email, password };
     try {
-      const response = await fetch('http://localhost:3000/login', {
+      const response = await fetch('https://study-helper-rbkb.onrender.com/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -72,10 +65,10 @@ const Authentication = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch('http://localhost:3000/logout', {
+      const response = await fetch('https://study-helper-rbkb.onrender.com/logout', {
         method: 'DELETE',
       });
-  
+
       if (response.ok) {
         // Logout was successful on the server, clear the user state
         setUser(null);
@@ -86,7 +79,6 @@ const Authentication = () => {
       console.error('Error during logout:', error);
     }
   };
-  
 
   const toggleRegister = () => {
     setIsRegistering(!isRegistering);
@@ -94,7 +86,7 @@ const Authentication = () => {
 
   return (
     <div className="authentication-container">
-      <h2>Authentication</h2>
+      <h2 className='log'>LOG IN/SIGN UP</h2>
       {user ? (
         <div>
           {/* If a user is logged in */}

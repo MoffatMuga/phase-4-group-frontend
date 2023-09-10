@@ -13,6 +13,8 @@
   .create-activity h2 {
     font-size: 1.5rem;
     margin-bottom: 10px;
+    font-family: 'Permanent Marker', cursive;
+    align-items: center;
   }
   
   .create-activity form {

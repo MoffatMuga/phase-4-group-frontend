@@ -3,6 +3,7 @@ import ActivityList from './ActivityList';
 import CreateActivity from './CreateActivity';
 import EditActivity from './EditActivity';
 import DeleteActivity from './DeleteActivity';
+import './Activity.css';
 
 const Activity = () => {
   const [activities, setActivities] = useState([]);
@@ -58,36 +59,44 @@ const Activity = () => {
   };
 
   return (
-    <div className="activity-container">
-      <h2>Activities</h2>
-      <ActivityList
-        activities={activities}
-        onEdit={activity => setEditingActivity(activity)}
-        onDelete={activity => setDeletingActivity(activity)}
-      />
-      <CreateActivity
-        selectedActivity={selectedActivity}
-        date={date}
-        onSelectActivity={activity => setSelectedActivity(activity)}
-        onChangeDate={newDate => setDate(newDate)}
-        onSubmit={handleSubmit}
-      />
-      {editingActivity && (
-        <EditActivity
-          activity={editingActivity}
+    <div className="activity-page">
+      <div className="activity-container">
+        <h2>Activities</h2>
+        <ActivityList
+          activities={activities}
+          onEdit={activity => setEditingActivity(activity)}
+          onDelete={activity => setDeletingActivity(activity)}
+        />
+        <CreateActivity
           selectedActivity={selectedActivity}
+          date={date}
           onSelectActivity={activity => setSelectedActivity(activity)}
+          onChangeDate={newDate => setDate(newDate)}
           onSubmit={handleSubmit}
         />
-      )}
-      {deletingActivity && (
-        <DeleteActivity
-          activity={deletingActivity}
-          onCancel={() => setDeletingActivity(null)}
-          onDelete={handleDelete}
+        {editingActivity && (
+          <EditActivity
+            activity={editingActivity}
+            selectedActivity={selectedActivity}
+            onSelectActivity={activity => setSelectedActivity(activity)}
+            onSubmit={handleSubmit}
+          />
+        )}
+        {deletingActivity && (
+          <DeleteActivity
+            activity={deletingActivity}
+            onCancel={() => setDeletingActivity(null)}
+            onDelete={handleDelete}
+          />
+        )}
+      </div>
+      <div className="image-container">
+        <img
+          src="photo5.png.png"
+          alt="Education Illustration by Storyset"
+          className="image"
         />
-      )}
-      
+      </div>
     </div>
   );
 };

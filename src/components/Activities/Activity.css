@@ -1,13 +1,29 @@
-.activity-container {
-    min-height: 70vh;
-    .image-container {
-        position: absolute;
-        top: 0;
-        right: 0;
-      }
-      
-      .image {
-        width: 100px; 
-        height: auto;
-      }
-}
+
+.activity-page {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px; 
+  }
+  
+  .activity-container {
+    flex: 2;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .image-container {
+    
+    background-color: #ffffff; 
+    border-radius: 10px;
+    flex: 1;
+  }
+  
+  .image {
+    max-width: 100%; 
+    display: block;
+    border-radius: 10px;
+    max-height: 100vh; 
+  }
