@@ -17,7 +17,7 @@ function EditActivity() {
 
   const handleUpdate = () => {
     
-    fetch(`http://127.0.0.1:3000/activities/:id`, {
+    fetch(`https://study-helper-api1.onrender.com/activities/:id`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

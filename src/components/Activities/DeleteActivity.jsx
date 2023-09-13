@@ -12,7 +12,7 @@ function DeleteActivity() {
 
   const handleDelete = () => {
     
-    fetch(`http://127.0.0.1:3000/activities/${activityId}`, {
+    fetch(`https://study-helper-api1.onrender.com/activities/${activityId}`, {
       method: 'DELETE',
     })
       .then((response) => {

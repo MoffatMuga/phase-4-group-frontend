@@ -15,14 +15,14 @@ const Activity = () => {
 
   useEffect(() => {
     
-    /* fetch('http://127.0.0.1:3000/activities')
+    /* fetch('https://study-helper-api1.onrender.com/activities')
       .then(response => response.json())
       .then(data => setActivities(data)); */
       handleGetActivities()
   }, []);
 
   const handleGetActivities = () => {
-    fetch('http://127.0.0.1:3000/activities')
+    fetch('https://study-helper-api1.onrender.com/activities')
       .then((response) => {
         if (response.ok) {
           return response.json();

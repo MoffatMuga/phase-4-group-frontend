@@ -41,7 +41,7 @@ function CreateActivity({onCreate}) {
       Authorization: `Bearer ${sessionToken}`,
     };
 
-    fetch('http://127.0.0.1:3000/activities', {
+    fetch('https://study-helper-api1.onrender.com/activities', {
       method: 'POST',
       headers,
       body: JSON.stringify(activityData),

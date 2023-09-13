@@ -21,7 +21,7 @@ const Authentication = () => {
 
     const newUser = { user: { name, email, password, age } };
     try {
-      const response = await fetch('http://127.0.0.1:3000/signup', {
+      const response = await fetch('https://study-helper-api1.onrender.com/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ const Authentication = () => {
     const credentials = { user: { email, password } };
 
     try {
-      const response = await fetch('http://127.0.0.1:3000/login', {
+      const response = await fetch('https://study-helper-api1.onrender.com/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
