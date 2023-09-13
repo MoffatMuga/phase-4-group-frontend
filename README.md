@@ -25,7 +25,7 @@ Install Dependencies: npm install
 Start the Application: npm start
 
 Access the App:
-Open your web browser and visit http://localhost:3000 to access the Study Helper App - Frontend.
+
 
 Usage
 User Registration and Login:
