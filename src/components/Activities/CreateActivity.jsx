@@ -1,55 +1,107 @@
+import React, { useState, useEffect } from 'react';
+import './CreateActivity.css';
 
-import React, { useState } from 'react';
-import './CreateActivity.css'; 
+function CreateActivity() {
+  const [activityData, setActivityData] = useState({
+    title: '',
+    description: '',
+    date: '',
+  });
 
-const CreateActivity = ({ onCreate }) => {
-  const [selectedActivity, setSelectedActivity] = useState('');
-  const [date, setDate] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
-  const activityOptions = ['Codility', 'Code Challenge', 'Labs']; 
+  const sessionToken = localStorage.getItem('sessionToken');
+  const [isAuthenticated, setIsAuthenticated] = useState(Boolean(sessionToken));
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    
-    fetch('/activities', {
+  useEffect(() => {
+    setIsAuthenticated(Boolean(sessionToken));
+    if (!sessionToken) {
+      setErrorMessage('User is not authenticated. Please log in to continue.');
+    }
+  }, [sessionToken]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setActivityData({ ...activityData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!isAuthenticated) {
+      console.error('User is not authenticated.');
+      setErrorMessage('User is not authenticated. Please log in to continue.');
+      return;
+    }
+
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${sessionToken}`,
+    };
+
+    fetch('http://127.0.0.1:3000/activities', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: selectedActivity, date }),
+      headers,
+      body: JSON.stringify(activityData),
     })
-      .then(response => response.json())
-      .then(data => {
-        onCreate(data);
-        setSelectedActivity('');
-        setDate('');
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Failed to create activity');
+        }
+      })
+      .then((data) => {
+        setActivityData({
+          title: '',
+          description: '',
+          date: '',
+        });
+        setSuccessMessage('Activity was successfully created.');
+        setErrorMessage('');
+      })
+      .catch((error) => {
+        setErrorMessage('Failed to create activity. Please check your input.');
+        setSuccessMessage('');
       });
   };
 
   return (
     <div className="create-activity">
-      <h2 className='create'>CREATE AN ACTIVITY</h2>
-      <form onSubmit={handleSubmit}>
-        <select
-          value={selectedActivity}
-          onChange={event => setSelectedActivity(event.target.value)}
-          placeholder="Select Activity"
-        >
-          <option value="">Select an activity</option>
-          {activityOptions.map(option => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-        <input
-          type="date"
-          value={date}
-          onChange={event => setDate(event.target.value)}
-          placeholder="Activity Date"
-        />
-        <button type="submit">Create</button>
-      </form>
+      <h2>Create Activity</h2>
+      {!isAuthenticated ? (
+        <div className="error-message">{errorMessage}</div>
+      ) : (
+        <>
+          {errorMessage && <div className="error-message">{errorMessage}</div>}
+          {successMessage && <div className="success-message">{successMessage}</div>}
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="title"
+              placeholder="Title"
+              value={activityData.title}
+              onChange={handleInputChange}
+            />
+            <textarea
+              name="description"
+              placeholder="Description"
+              value={activityData.description}
+              onChange={handleInputChange}
+            ></textarea>
+            <input
+              type="date"
+              name="date"
+              value={activityData.date}
+              onChange={handleInputChange}
+            />
+            <button type="submit">Create</button>
+          </form>
+        </>
+      )}
     </div>
   );
-};
+}
 
 export default CreateActivity;

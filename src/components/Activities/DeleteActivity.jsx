@@ -1,23 +1,49 @@
+import React, { useState } from 'react';
 
-import React from 'react';
 
-const DeleteActivity = ({ activity, onDelete }) => {
+function DeleteActivity() {
+  const [activityId, setActivityId] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
+  const handleInputChange = (e) => {
+    setActivityId(e.target.value);
+  };
+
   const handleDelete = () => {
     
-    fetch(`/activities/${activity.id}`, {
+    fetch(`http://127.0.0.1:3000/activities/${activityId}`, {
       method: 'DELETE',
     })
-      .then(response => response.json())
-      .then(() => onDelete(activity.id));
+      .then((response) => {
+        if (response.ok) {
+          setSuccessMessage('Activity was successfully deleted.');
+          setErrorMessage('');
+        } else {
+          throw new Error('Failed to delete activity');
+        }
+      })
+      .catch((error) => {
+        setErrorMessage('Failed to delete activity. Please check the activity ID.');
+        setSuccessMessage('');
+      });
   };
 
   return (
     <div className="delete-activity">
       <h2>Delete Activity</h2>
-      <p>Are you sure you want to delete the activity "{activity.title}"?</p>
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
+      {successMessage && <div className="success-message">{successMessage}</div>}
+      <input
+        type="text"
+        name="activityId"
+        placeholder="Activity ID"
+        value={activityId}
+        onChange={handleInputChange}
+      />
       <button onClick={handleDelete}>Delete</button>
     </div>
   );
-};
+}
 
 export default DeleteActivity;

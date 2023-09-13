@@ -13,15 +13,14 @@ const Activity = () => {
   const [deletingActivity, setDeletingActivity] = useState(null);
 
   useEffect(() => {
-    // Fetch activity data or perform any initial setup
-    // Example fetch:
-    fetch('/activities')
+    
+    fetch('http://127.0.0.1:3000/activities')
       .then(response => response.json())
       .then(data => setActivities(data));
   }, []);
 
   const handleCreate = () => {
-    // Mock creation logic (replace with actual API call)
+    
     const newActivity = { name: selectedActivity, date };
     // ...
     onCreate(newActivity);
@@ -30,18 +29,18 @@ const Activity = () => {
   };
 
   const handleUpdate = () => {
-    // Mock update logic (replace with actual API call)
+   
     const updatedActivity = { ...editingActivity, title: selectedActivity };
-    // ...
+   
     onUpdate(updatedActivity);
     setEditingActivity(null);
     setSelectedActivity('');
   };
 
   const handleDelete = () => {
-    // Mock delete logic (replace with actual API call)
+  
     const deletedActivityId = deletingActivity.id;
-    // ...
+    
     onDelete(deletedActivityId);
     setDeletingActivity(null);
   };
@@ -61,7 +60,6 @@ const Activity = () => {
   return (
     <div className="activity-page">
       <div className="activity-container">
-        <h2>Activities</h2>
         <ActivityList
           activities={activities}
           onEdit={activity => setEditingActivity(activity)}

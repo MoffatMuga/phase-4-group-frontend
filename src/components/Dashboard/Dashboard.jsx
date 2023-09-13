@@ -2,8 +2,7 @@
 import React, { useState } from 'react';
 import Sidebar from './Sidebar';
 import ActivityGraph from './ActivityGraph';
-//import CreateActivity from '../Activities/CreateActivity'; 
-import './Dashboard.css'; 
+import './Dashboard.css';
 
 const activitiesData = [
   {
@@ -21,7 +20,6 @@ const activitiesData = [
     name: 'Labs',
     // ... Other properties 
   },
-
 ];
 
 const Dashboard = () => {
@@ -38,14 +36,13 @@ const Dashboard = () => {
       <Sidebar user={{ name: 'User Name' }} activities={activitiesData} onActivityClick={handleActivityClick} />
       <div className="content">
         <div className="graph-container">
-          <h2 className='activity-h2'>YOUR ACTIVITY GRAPH</h2>
+          <h2>Activity Graph</h2>
           {selectedActivityData ? (
             <ActivityGraph data={selectedActivityData} />
           ) : (
-            <p>Select an activity from the sidebar or create a new activity.</p>
+            <p>Select an activity from the sidebar.</p>
           )}
         </div>
-        
       </div>
     </div>
   );

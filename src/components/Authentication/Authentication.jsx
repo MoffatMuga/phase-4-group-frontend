@@ -1,19 +1,27 @@
+// Authentication.js
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Authentication.css';
 
 const Authentication = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
-  const [user, setUser] = useState(null);
   const [isRegistering, setIsRegistering] = useState(false);
+  const [passwordMatch, setPasswordMatch] = useState(true);
 
   const handleSignUp = async () => {
-    // Register the user by making a POST request to your backend API
-    const newUser = { name, email, password, age };
+    if (password !== confirmPassword) {
+      setPasswordMatch(false);
+      return;
+    }
+
+    const newUser = { user: { name, email, password, age } };
     try {
-      const response = await fetch('https://study-helper-rbkb.onrender.com/users', {
+      const response = await fetch('http://127.0.0.1:3000/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -22,15 +30,14 @@ const Authentication = () => {
       });
 
       if (response.ok) {
-        // Registration successful, handle the response if needed
-        setUser(newUser);
-
-        // After successful registration, reset the form and switch back to login
         setEmail('');
         setPassword('');
+        setConfirmPassword('');
         setName('');
         setAge('');
         setIsRegistering(false);
+        // Optionally, you can also navigate to the login page after successful registration
+        navigate('/login');
       } else {
         console.error('Registration failed.');
       }
@@ -40,10 +47,10 @@ const Authentication = () => {
   };
 
   const handleLogin = async () => {
-    // Make a POST request to your backend API for authentication
-    const credentials = { email, password };
+    const credentials = { user: { email, password } };
+
     try {
-      const response = await fetch('https://study-helper-rbkb.onrender.com/login', {
+      const response = await fetch('http://127.0.0.1:3000/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -52,31 +59,14 @@ const Authentication = () => {
       });
 
       if (response.ok) {
-        // Authentication successful, handle the response if needed
         const userData = await response.json();
-        setUser(userData);
+        localStorage.setItem('sessionToken', userData.token);
+        navigate('/activities');
       } else {
         console.error('Invalid email or password.');
       }
     } catch (error) {
       console.error('Error during login:', error);
-    }
-  };
-
-  const handleLogout = async () => {
-    try {
-      const response = await fetch('https://study-helper-rbkb.onrender.com/logout', {
-        method: 'DELETE',
-      });
-
-      if (response.ok) {
-        // Logout was successful on the server, clear the user state
-        setUser(null);
-      } else {
-        console.error('Logout failed.');
-      }
-    } catch (error) {
-      console.error('Error during logout:', error);
     }
   };
 
@@ -87,76 +77,70 @@ const Authentication = () => {
   return (
     <div className="authentication-container">
       <h2 className='log'>LOG IN/SIGN UP</h2>
-      {user ? (
+      {isRegistering ? (
         <div>
-          {/* If a user is logged in */}
-          <p className="welcome-message">Welcome, {user.name}</p>
-          <button className="logout-button" onClick={handleLogout}>
-            Log Out
+          <input
+            className="input-field"
+            type="text"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <input
+            className="input-field"
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            className="input-field"
+            type="text"
+            placeholder="Age"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+          />
+          <input
+            className="input-field"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <input
+            className="input-field"
+            type="password"
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+          {!passwordMatch && <p>Passwords do not match.</p>}
+          <button className="action-button" onClick={handleSignUp}>
+            Sign Up
           </button>
         </div>
       ) : (
         <div>
-          {isRegistering ? (
-            <div>
-              {/* If the user is in registration mode */}
-              <input
-                className="input-field"
-                type="text"
-                placeholder="Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-              <input
-                className="input-field"
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <input
-                className="input-field"
-                type="text"
-                placeholder="Age"
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-              />
-              <input
-                className="input-field"
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <button className="action-button" onClick={handleSignUp}>
-                Sign Up
-              </button>
-            </div>
-          ) : (
-            <div>
-              {/* If the user is in login mode */}
-              <input
-                className="input-field"
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <input
-                className="input-field"
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <button className="action-button" onClick={handleLogin}>
-                Log In
-              </button>
-              <button className="action-button" onClick={toggleRegister}>
-                Don't have an account, register
-              </button>
-            </div>
-          )}
+          <input
+            className="input-field"
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            className="input-field"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button className="action-button" onClick={handleLogin}>
+            Log In
+          </button>
+          <button className="action-button" onClick={toggleRegister}>
+            Don't have an account? Register
+          </button>
         </div>
       )}
     </div>

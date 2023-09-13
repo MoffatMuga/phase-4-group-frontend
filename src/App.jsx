@@ -15,6 +15,12 @@ const App = () => {
     avatarUrl: 'URL_to_user_avatar_image',
   };
 
+
+  const handleActivityCreation = (activityData) => {
+    // Handle the activity creation logic here (e.g., send it to the server)
+    console.log('Activity created:', activityData);
+  };
+
   return (
     <Router>
       <div className="app">
@@ -30,8 +36,8 @@ const App = () => {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/authentication" element={<Authentication />} />
-          <Route path="/activities/*" element={<Activity />} />
+          <Route path="/authentication" element={<Authentication onLogin={handleActivityCreation} />} />
+          <Route path="/activities/" element={<Activity />} />
           <Route path="/dashboard" element={<Dashboard user={user} />} />
           <Route path="/user-profile" element={<UserProfile user={user} />} />
         </Routes>
