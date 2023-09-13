@@ -11,14 +11,34 @@ const Activity = () => {
   const [date, setDate] = useState('');
   const [editingActivity, setEditingActivity] = useState(null);
   const [deletingActivity, setDeletingActivity] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     
-    fetch('http://127.0.0.1:3000/activities')
+    /* fetch('http://127.0.0.1:3000/activities')
       .then(response => response.json())
-      .then(data => setActivities(data));
+      .then(data => setActivities(data)); */
+      handleGetActivities()
   }, []);
 
+  const handleGetActivities = () => {
+    fetch('http://127.0.0.1:3000/activities')
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Failed to fetch activities');
+        }
+      })
+      .then((data) => {
+        setActivities(data);
+        setErrorMessage('');
+      })
+      .catch((error) => {
+        setErrorMessage('Failed to fetch activities from the server.');
+      }); 
+
+  }
   const handleCreate = () => {
     
     const newActivity = { name: selectedActivity, date };
@@ -64,6 +84,7 @@ const Activity = () => {
           activities={activities}
           onEdit={activity => setEditingActivity(activity)}
           onDelete={activity => setDeletingActivity(activity)}
+          errorMessage={errorMessage}
         />
         <CreateActivity
           selectedActivity={selectedActivity}
@@ -71,6 +92,7 @@ const Activity = () => {
           onSelectActivity={activity => setSelectedActivity(activity)}
           onChangeDate={newDate => setDate(newDate)}
           onSubmit={handleSubmit}
+          onCreate={handleGetActivities}
         />
         {editingActivity && (
           <EditActivity

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './CreateActivity.css';
 
-function CreateActivity() {
+function CreateActivity({onCreate}) {
   const [activityData, setActivityData] = useState({
     title: '',
     description: '',
     date: '',
+    user_id: 2,  //Update this to make user id dynammic
   });
 
   const [errorMessage, setErrorMessage] = useState('');
@@ -57,7 +58,9 @@ function CreateActivity() {
           title: '',
           description: '',
           date: '',
+          user_id: 2, //Update this to make user id dynammic
         });
+        onCreate()
         setSuccessMessage('Activity was successfully created.');
         setErrorMessage('');
       })

@@ -1,27 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './ActivityList.css'
 
-function ActivityList() {
-  const [activities, setActivities] = useState([]);
-  const [errorMessage, setErrorMessage] = useState('');
+  function ActivityList({activities, errorMessage}) {
+  //const [activities, setActivities] = useState([]);
+  //const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    // Fetch the list of activities from the backend
-    fetch('http://127.0.0.1:3000/activities')
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error('Failed to fetch activities');
-        }
-      })
-      .then((data) => {
-        setActivities(data);
-        setErrorMessage('');
-      })
-      .catch((error) => {
-        setErrorMessage('Failed to fetch activities from the server.');
-      });
+    
+
+
+
+
   }, []);
 
   return (

@@ -37,7 +37,8 @@ const Authentication = () => {
         setAge('');
         setIsRegistering(false);
         // Optionally, you can also navigate to the login page after successful registration
-        navigate('/login');
+        //navigate('/login');
+        setIsRegistering(false);
       } else {
         console.error('Registration failed.');
       }
